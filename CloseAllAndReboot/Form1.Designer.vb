@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.cmdRun = New System.Windows.Forms.Button()
         Me.txtProcessName = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
@@ -59,9 +60,9 @@ Partial Class Form1
         Me.txtProcessName.Location = New System.Drawing.Point(11, 108)
         Me.txtProcessName.Multiline = True
         Me.txtProcessName.Name = "txtProcessName"
-        Me.txtProcessName.Size = New System.Drawing.Size(318, 14)
+        Me.txtProcessName.Size = New System.Drawing.Size(322, 14)
         Me.txtProcessName.TabIndex = 1
-        Me.txtProcessName.Text = "Process Name"
+        Me.txtProcessName.Text = "Running Processes"
         Me.txtProcessName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel1
@@ -119,7 +120,7 @@ Partial Class Form1
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.622951!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 97.37705!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 14.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 10.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.txtProcessName, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.lblCount, 1, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -142,7 +143,7 @@ Partial Class Form1
         Me.lblCount.Font = New System.Drawing.Font("Segoe UI", 36.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.lblCount.Location = New System.Drawing.Point(11, 6)
         Me.lblCount.Name = "lblCount"
-        Me.lblCount.Size = New System.Drawing.Size(318, 99)
+        Me.lblCount.Size = New System.Drawing.Size(322, 99)
         Me.lblCount.TabIndex = 3
         Me.lblCount.Text = "01"
         Me.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -158,6 +159,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.cmdRun)
         Me.Controls.Add(Me.FlowLayoutPanel1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "!! CLOSE ALL AND REBOOT ?? !!"

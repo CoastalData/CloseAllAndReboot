@@ -17,11 +17,22 @@ Public Class Form1
         lblCount.Text = intCount.ToString()
 
         lblCount.AutoSize = True
-        txtProcessName.Text = ""
+        txtProcessName.Text = "Running Processes"
 
         cmdCancel.Visible = False
         cmdRun.Enabled = True
         blContinue = True
+    End Sub
+
+    ''' <summary>
+    ''' https://www.vbforums.com/showthread.php?739377-Closing-File-Explorer-Windows
+    ''' </summary>
+    Sub KillAllExplorerWindows()
+        Dim explorers() As System.Diagnostics.Process = System.Diagnostics.Process.GetProcessesByName("explorer")
+        For Each explorer In explorers
+            ' Debug.Print(explorer.ProcessName)
+            explorer.Kill()
+        Next
     End Sub
 
     ''' <summary>
@@ -58,7 +69,7 @@ Public Class Form1
                         Case "explorer"
                             intExpPid = myProcess.Id
                             Continue For
-                        Case "dllhost", "svchost.exe", "svchost", "Idle", "System"
+                        Case "dllhost", "svchost.exe", "svchost", "conhost", "Idle", "System", "lsass", "ntoskrnl", "winlogon", "registry", "wininit", "csrss", "smss", "SearchFilterHost", "searchindexer", "SearchProtocolHost", "services"
                             Continue For
                     End Select
 
@@ -77,7 +88,11 @@ Public Class Form1
             Next
         End If
 
+        Call KillAllExplorerWindows()
+
         If chkReboot.Checked Then
+            Application.DoEvents()
+            'Dim ret As MsgBoxResult = MessageBox.Show("Reboot Now?", "Alert!", vbYes)
             myProcess = Process.GetProcessById(intExpPid)
             myProcess.CloseMainWindow()
         End If
